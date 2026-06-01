@@ -92,7 +92,7 @@ jobs:
           KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
         run: |
           if [ -z "$APPLE_CERTIFICATE" ]; then
-            if [ -n "$APPLE_API_KEY" ] || [ -n "$APPLE_API_ISSUER" ] || [ -n "$APPLE_API_PRIVATE_KEY" ] || [ -n "$APPLE_ID" ] || [ -n "$APPLE_PASSWORD" ] || [ -n "$APPLE_TEAM_ID" ]; then
+            if [ -n "$APPLE_API_KEY" ] || [ -n "$APPLE_API_ISSUER" ] || [ -n "$APPLE_API_PRIVATE_KEY" ] || [ -n "$APPLE_ID" ] || [ -n "$APPLE_PASSWORD" ]; then
               echo "::error::Apple notarization secrets are configured, but APPLE_CERTIFICATE is missing."
               exit 1
             fi
@@ -115,7 +115,7 @@ jobs:
           fi
 
           HAS_APPLE_ID_AUTH=false
-          if [ -n "$APPLE_ID" ] || [ -n "$APPLE_PASSWORD" ] || [ -n "$APPLE_TEAM_ID" ]; then
+          if [ -n "$APPLE_ID" ] || [ -n "$APPLE_PASSWORD" ]; then
             if [ -z "$APPLE_ID" ] || [ -z "$APPLE_PASSWORD" ] || [ -z "$APPLE_TEAM_ID" ]; then
               echo "::error::APPLE_ID, APPLE_PASSWORD, and APPLE_TEAM_ID must be configured together."
               exit 1
