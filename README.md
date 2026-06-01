@@ -106,12 +106,13 @@ The workflow creates a draft prerelease named from the app version. Review the g
 
 ## Roadmap
 
-- Publish the first public preview release.
 - Add a short demo video or GIF.
-- Add a simple first-run guide for choosing skill roots.
+- Add clearer platform install notes for macOS, Windows, and Linux.
+- Add a simple first-run guide for choosing skill roots and understanding backups.
 - Add project-local skill root management.
 - Add richer validation details for linked files and references.
-- Add Windows code signing and auto-update support.
+- Add update checks after the release flow feels stable.
+- Add Windows code signing.
 - Explore additional providers after Codex and Claude workflows feel stable.
 
 ## License
