@@ -112,16 +112,26 @@ For GitHub Releases outside the Mac App Store, use a `Developer ID Application` 
 - `APPLE_CERTIFICATE`: base64-encoded `.p12` certificate.
 - `APPLE_CERTIFICATE_PASSWORD`: password for the `.p12` export.
 - `KEYCHAIN_PASSWORD`: temporary CI keychain password.
+- `APPLE_SIGNING_IDENTITY`: optional explicit signing identity, such as `Developer ID Application: Example (TEAMID)`.
+
+For notarization, prefer App Store Connect API key secrets:
+
+- `APPLE_API_KEY`: App Store Connect API key ID.
+- `APPLE_API_ISSUER`: App Store Connect issuer ID.
+- `APPLE_API_PRIVATE_KEY`: contents of the downloaded `AuthKey_*.p8` private key.
+
+Apple ID notarization is also supported as a fallback:
+
 - `APPLE_ID`: Apple ID email used for notarization.
 - `APPLE_PASSWORD`: app-specific password for the Apple ID.
 - `APPLE_TEAM_ID`: Apple Developer Team ID.
-- `APPLE_SIGNING_IDENTITY`: optional explicit signing identity, such as `Developer ID Application: Example (TEAMID)`.
 
 Where to get them:
 
 - `APPLE_CERTIFICATE`: Apple Developer > Certificates, Identifiers & Profiles > Certificates > add a `Developer ID Application` certificate. Install the downloaded certificate in Keychain Access, then export the private key and certificate as a `.p12` from `My Certificates`.
 - `APPLE_CERTIFICATE_PASSWORD`: the password you set when exporting the `.p12`.
 - `KEYCHAIN_PASSWORD`: any strong temporary password used only for the CI keychain.
+- `APPLE_API_KEY`, `APPLE_API_ISSUER`, `APPLE_API_PRIVATE_KEY`: App Store Connect > Users and Access > Integrations > App Store Connect API. Create a key with Developer access, then download the `.p8` file once.
 - `APPLE_ID`: the Apple ID email used for notarization.
 - `APPLE_PASSWORD`: an app-specific password from appleid.apple.com.
 - `APPLE_TEAM_ID`: Apple Developer account > Membership details.
