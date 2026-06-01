@@ -39,7 +39,7 @@ Gemini and additional providers are intentionally deferred until the shared prov
 
 ## Install
 
-Downloadable release builds are produced by GitHub Actions for macOS, Windows, and Linux. macOS builds are signed and notarized when Apple Developer secrets are configured; otherwise the workflow still produces unsigned preview builds.
+Downloadable release builds are produced by GitHub Actions for macOS, Windows, and Linux.
 
 To run from source:
 
@@ -94,7 +94,6 @@ Release builds are configured in GitHub Actions:
 - CI on pushes and pull requests.
 - Draft prerelease installers from the `Release Builds` workflow.
 - macOS Apple Silicon, macOS Intel, Linux x64, and Windows x64 bundles.
-- Optional macOS Developer ID signing and notarization.
 
 To prepare a release, update the version in `package.json` and `src-tauri/tauri.conf.json`, then run the workflow manually or push a matching tag:
 
@@ -105,45 +104,14 @@ git push origin app-v0.1.0
 
 The workflow creates a draft prerelease named from the app version. Review the generated assets before publishing it.
 
-### macOS Signing
-
-For GitHub Releases outside the Mac App Store, use a `Developer ID Application` certificate from the Apple Developer account. Add these repository secrets before running a signed macOS release:
-
-- `APPLE_CERTIFICATE`: base64-encoded `.p12` certificate.
-- `APPLE_CERTIFICATE_PASSWORD`: password for the `.p12` export.
-- `KEYCHAIN_PASSWORD`: temporary CI keychain password.
-- `APPLE_SIGNING_IDENTITY`: optional explicit signing identity, such as `Developer ID Application: Example (TEAMID)`.
-
-For notarization, prefer App Store Connect API key secrets:
-
-- `APPLE_API_KEY`: App Store Connect API key ID.
-- `APPLE_API_ISSUER`: App Store Connect issuer ID.
-- `APPLE_API_PRIVATE_KEY`: contents of the downloaded `AuthKey_*.p8` private key.
-
-Where to get them:
-
-- `APPLE_CERTIFICATE`: Apple Developer > Certificates, Identifiers & Profiles > Certificates > add a `Developer ID Application` certificate. Install the downloaded certificate in Keychain Access, then export the private key and certificate as a `.p12` from `My Certificates`.
-- `APPLE_CERTIFICATE_PASSWORD`: the password you set when exporting the `.p12`.
-- `KEYCHAIN_PASSWORD`: any strong temporary password used only for the CI keychain.
-- `APPLE_API_KEY`, `APPLE_API_ISSUER`, `APPLE_API_PRIVATE_KEY`: App Store Connect > Users and Access > Integrations > App Store Connect API. Create a key with Developer access, then download the `.p8` file once.
-- `APPLE_SIGNING_IDENTITY`: the exact Keychain identity name. If omitted, the workflow uses the first `Developer ID Application` identity in the imported `.p12`.
-
-Example certificate export:
-
-```bash
-openssl base64 -A -in developer-id-application.p12 | pbcopy
-```
-
-Paste that value into `APPLE_CERTIFICATE`.
-
 ## Roadmap
 
-- Publish the first signed macOS preview release from GitHub Actions.
-- Add a short demo capture.
-- Add Windows code signing.
-- Add auto-update support after signed releases are in place.
+- Publish the first public preview release.
+- Add a short demo video or GIF.
+- Add a simple first-run guide for choosing skill roots.
 - Add project-local skill root management.
 - Add richer validation details for linked files and references.
+- Add Windows code signing and auto-update support.
 - Explore additional providers after Codex and Claude workflows feel stable.
 
 ## License
