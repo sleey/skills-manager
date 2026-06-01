@@ -6,9 +6,15 @@ Agent Skills Manager is a local-first desktop app for managing Codex and Claude 
 
 The app is built with Tauri, React, TypeScript, and Rust. It is designed for local files first: no account, no cloud sync, and no background writes.
 
-## Screenshot
+## Screenshots
+
+Dark theme:
 
 <img src="docs/assets/screenshots/app-overview.png" alt="Agent Skills Manager desktop app" width="960">
+
+Light theme:
+
+<img src="docs/assets/screenshots/app-overview-light.png" alt="Agent Skills Manager desktop app in light theme" width="960">
 
 ## What It Does
 
